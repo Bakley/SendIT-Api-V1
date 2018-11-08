@@ -3,13 +3,12 @@ app/api/v1/models/parcel_models.py
 contains user models for the app
 """
 
-
 from .import MockDatabase
 
 # Initialize the mock database
 database = MockDatabase()
 
-class ParcelModel:
+class ParcelModel():
     """
     Class Parcel models
     Initialize users information
@@ -23,14 +22,15 @@ class ParcelModel:
         self.status = status
         self.id = None
 
+
     def save(self):
         """
         Create the Parcel information in the mock database and save
         """
         setattr(self, 'id', database.parcel_number + 1) # Increment the Parcel number 
         # self is the object to be set
-        database.user_number += 1 # Increment the User list
-        database.parcels[self.user_id].update({self.id: self})
+        database.parcel_number += 1 # Increment the Parcel 
+        database.parcels.update({self.id: self})
         return self.view()
         
     def view(self):
@@ -43,4 +43,13 @@ class ParcelModel:
 
     def delete(self):
         '''Method for deleting a user'''
-        del database.users[self.id]
+        del database.parcels[self.id]
+
+    @classmethod
+    def get_all_user(cls, id):
+        """Method for getting all parcels available in the database"""
+        for id_ in database.parcels:
+            parcel = database.parcels.get(id_)
+            if parcel.id == id:
+                return parcel
+            return None

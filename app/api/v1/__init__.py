@@ -12,7 +12,7 @@ app = Api(version1)
 #Resources are the spiecific route we need to pass the endpoint
 
 # Parcel
-app.add_resource(ParcelResource, "/parcel")
+app.add_resource(ParcelResource, '/parcel', '/parcel/<int:parcel_id>')
 
 # Users
 app.add_resource(SignupResource, '/user/register')
