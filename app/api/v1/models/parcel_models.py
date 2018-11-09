@@ -1,7 +1,5 @@
-"""
-app/api/v1/models/parcel_models.py.
-contains user models for the app
-"""
+
+"""app/api/v1/models/parcel_models.py. contains user models for the app."""
 # from .import MockDatabase
 
 # Initialize the mock database
@@ -43,5 +41,6 @@ class ParcelModel():
 
     def get_one_parcel(self, id):
         """Method for getting a specific parcel available in the database."""
-        new_parcel = [new_parcel for new_parcel in parcels if new_parcel[
-            'id'] == id]  # list comprehension
+        new_parcel = [new_par for new_par in parcel if new_par[
+            'id'] == str(id)]  # list comprehension
+        return new_parcel

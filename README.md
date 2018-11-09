@@ -1,6 +1,12 @@
 # SendIT-Api-V1
 We are expected to create a set of API endpoints
 
+[![Build Status](https://travis-ci.org/Bakley/SendIT-Api-V1.svg?branch=develop)](https://travis-ci.org/Bakley/SendIT-Api-V1)
+
+[![Maintainability](https://api.codeclimate.com/v1/badges/a078df0f9b3d7e6aa7ef/maintainability)](https://codeclimate.com/github/Bakley/SendIT-Api-V1/maintainability)
+
+[![Test Coverage](https://api.codeclimate.com/v1/badges/a078df0f9b3d7e6aa7ef/test_coverage)](https://codeclimate.com/github/Bakley/SendIT-Api-V1/test_coverage)
+
 ## API Endpoints covered included in this branch
 
 

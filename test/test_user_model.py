@@ -31,3 +31,7 @@ class TestUserModel(BaseClass):
         self.user1.save()
         user = UserModel.get(id=1)
         self.assertIsInstance(user, UserModel)
+
+    def test_user_password_match(self):
+        """Test if the user password matches."""
+        pass
