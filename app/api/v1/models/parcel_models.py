@@ -1,20 +1,19 @@
 """
-app/api/v1/models/parcel_models.py
+app/api/v1/models/parcel_models.py.
 contains user models for the app
 """
-
-from .import MockDatabase
+# from .import MockDatabase
 
 # Initialize the mock database
-database = MockDatabase()
+# database = MockDatabase()
+parcel = []
+
 
 class ParcelModel():
-    """
-    Class Parcel models
-    Initialize users information
-    """
+    """Class Parcel models."""
 
     def __init__(self, present_location, price, weight, destination, status):
+        """Initialize users information."""
         self.present_location = present_location
         self.price = price
         self.weight = weight
@@ -22,34 +21,27 @@ class ParcelModel():
         self.status = status
         self.id = None
 
-
     def save(self):
-        """
-        Create the Parcel information in the mock database and save
-        """
-        setattr(self, 'id', database.parcel_number + 1) # Increment the Parcel number 
-        # self is the object to be set
-        database.parcel_number += 1 # Increment the Parcel 
-        database.parcels.update({self.id: self})
-        return self.view()
-        
-    def view(self):
-        """
-        Jsonify the Parcel object
-        """
-        database_keys = ['id', 'present_location', 'price', 'weight', 'destination', 'status']
-        return {key: getattr(self, key)for key in database_keys}
-
+        """Create the Parcel information in the mock database and save."""
+        parcels = {}
+        parcels['id'] = str(len(parcel) + 1)
+        parcels['present_location'] = self.present_location
+        parcels['price'] = self.price
+        parcels['weight'] = self.weight
+        parcels['destination'] = self.destination
+        parcels['status'] = self.status
+        parcel.append(parcels)
+        return parcel
 
     def delete(self):
-        '''Method for deleting a user'''
-        del database.parcels[self.id]
+        """Method for deleting a user."""
+        del parcel
 
-    @classmethod
-    def get_all_user(cls, id):
-        """Method for getting all parcels available in the database"""
-        for id_ in database.parcels:
-            parcel = database.parcels.get(id_)
-            if parcel.id == id:
-                return parcel
-            return None
+    def get_all_parcels(self):
+        """Method for getting all parcels available in the database."""
+        return parcel
+
+    def get_one_parcel(self, id):
+        """Method for getting a specific parcel available in the database."""
+        new_parcel = [new_parcel for new_parcel in parcels if new_parcel[
+            'id'] == id]  # list comprehension
