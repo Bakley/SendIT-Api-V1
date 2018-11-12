@@ -75,5 +75,5 @@ class ParcelSpecific(Resource):
         """Method for updating parcel info."""
         parcel_orders = ParcelModel.cancel_order(id)
         if parcel_orders:
-            return {'new parcel': parcel_orders}
+            return {'new parcel': parcel_orders }
         return {'new parcel': "No parcel order updated"}

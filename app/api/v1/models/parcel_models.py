@@ -52,5 +52,5 @@ class ParcelModel():
         for parcel_order in parcel:
             if str(id) == parcel_order["id"]:
                 parcel_order.update({'status': 'Canceled'})
-                return parcel_order
+                return parcel_order 
             return 404
