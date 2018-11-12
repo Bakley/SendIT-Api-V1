@@ -10,13 +10,13 @@ parcel = []
 class ParcelModel():
     """Class Parcel models."""
 
-    def __init__(self, present_location, price, weight, destination, status):
+    def __init__(self, present_location, price, weight, destination):
         """Initialize users information."""
         self.present_location = present_location
         self.price = price
         self.weight = weight
         self.destination = destination
-        self.status = status
+        self.status = "active"
         self.id = None
 
     def save(self):
@@ -33,14 +33,24 @@ class ParcelModel():
 
     def delete(self):
         """Method for deleting a user."""
-        del parcel
+        return parcel.pop()
 
     def get_all_parcels(self):
         """Method for getting all parcels available in the database."""
         return parcel
 
-    def get_one_parcel(self, id):
+    @classmethod
+    def get_one_parcel(cls, id):
         """Method for getting a specific parcel available in the database."""
         new_parcel = [new_par for new_par in parcel if new_par[
             'id'] == str(id)]  # list comprehension
         return new_parcel
+
+    @classmethod
+    def cancel_order(cls, id):
+        """Cancel a parcel order."""
+        for parcel_order in parcel:
+            if str(id) == parcel_order["id"]:
+                parcel_order.update({'status': 'Canceled'})
+                return parcel_order
+            return 404

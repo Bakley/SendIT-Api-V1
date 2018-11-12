@@ -1,12 +1,6 @@
-"""
-app/api/v1/models/user_models.py
-contains user models for the app
-"""
+"""app/api/v1/models/user_models.py contains user models for the app."""
 from werkzeug.security import check_password_hash, generate_password_hash
-from flask import current_app
-from datetime import datetime, timedelta
 
-import jwt
 
 from .import MockDatabase
 
@@ -86,20 +80,3 @@ class UserModel:
         if check_password_hash(self.password, password):
             return True
         return False
-
-    def generate_token(self):
-        """Method for generating token upon login."""
-        payload = {'exp': datetime.utcnow() + timedelta(minutes=60),
-                   'iat': datetime.utcnow(),
-                   'username': self.username,
-                   'id': self.id}
-        token = jwt.encode(payload, str(
-            current_app.config.get('SECRET')), algorithm='HS256')
-        return token.decode()
-
-    @staticmethod
-    def decode_token(token):
-        """Method for decoding token generated."""
-        payload = jwt.decode(token, str(
-            current_app.config.get('SECRET')), algorithms=['HS256'])
-        return payload

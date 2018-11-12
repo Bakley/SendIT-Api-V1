@@ -14,7 +14,7 @@ app = Api(version1)
 
 # Parcel
 app.add_resource(ParcelResource, '/parcel')
-app.add_resource(ParcelSpecific, '/parcel/<int:id>')
+app.add_resource(ParcelSpecific, '/parcel/<int:id>', '/parcel/<int:id>/cancel')
 
 # Users
 app.add_resource(SignupResource, '/user/register')

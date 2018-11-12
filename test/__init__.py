@@ -1,10 +1,11 @@
+"""Test base class."""
 import unittest
 import json
 
 from app import create_app
-from app.api.v1.models.parcel_models import ParcelModel, parcel
+from app.api.v1.models.parcel_models import ParcelModel
 from app.api.v1.models.user_models import UserModel, database
-from app.api.v1.models import MockDatabase
+
 
 SIGNUP_URL = '/api/v1/user/register'
 LOGIN_URL = '/api/v1/user/login'
@@ -14,7 +15,7 @@ class BaseClass(unittest.TestCase):
     """This is the base class for test cases."""
 
     def setUp(self):
-        """Initialize app and define test variables"""
+        """Initialize app and define test variables."""
         self.app = create_app('testing')
         self.client = self.app.test_client()
         self.app_context = self.app.app_context()
@@ -26,13 +27,14 @@ class BaseClass(unittest.TestCase):
             "role": "User"
         }
 
-        self.parcel_data = {
-            "present_location": "Nakuru",
-            "price": "$12",
-            "weight": "21kg",
-            "destination": "Nairobi",
-            "status": "Delivered"
-        }
+        self.parcel_data = [
+            {
+                "present_location": "Nakuru",
+                "price": "$12",
+                "weight": "21kg",
+                "destination": "Nairobi",
+            }
+        ]
 
         self.user1 = UserModel(
             username='testuser',
@@ -44,8 +46,7 @@ class BaseClass(unittest.TestCase):
             present_location="Nyeri",
             price="$21",
             weight="12kg",
-            destination="Nairobi",
-            status="Delivered"
+            destination="Nairobi"
         )
 
         self.test_user = UserModel(
@@ -55,16 +56,16 @@ class BaseClass(unittest.TestCase):
             role='User')
 
     def logged_in_user(self):
-        # first create user
+        """First create user, then log in user."""
         self.client.post(SIGNUP_URL, data=json.dumps(
             self.user_data), content_type='application/json')
 
-        # then log in user
         response = self.client.post(LOGIN_URL,
-                                    data=json.dumps({'username': 'Barclay', 'password': 'mypassword'}), content_type='application/json')
+                                    data=json.dumps({'username': 'Barclay',
+                                                     'password': 'mypassword'}), content_type='application/json')
 
         return response
 
     def tearDown(self):
-        '''Clears the database'''
+        """Clear the database."""
         database.drop()
