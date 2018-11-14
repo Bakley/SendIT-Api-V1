@@ -9,6 +9,7 @@ install:
 
 script: 
   - python -m pytest 
+  - nosetests --with-coverage --cover-package=app  && coverage report
 
 after_success:
   - coveralls

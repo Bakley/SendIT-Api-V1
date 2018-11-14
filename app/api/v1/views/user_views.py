@@ -65,7 +65,7 @@ class SignupResource(Resource):
             'email'), role=args.get('role'), password=password)
         user = user.save()
 
-        return {'message': 'Successfully registered', 'user': user}, 201
+        return {'message': 'Successfully registered', 'user': user}, 200
 
 
 class LoginResource(Resource):

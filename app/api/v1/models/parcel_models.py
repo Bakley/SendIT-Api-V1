@@ -1,9 +1,4 @@
-
 """app/api/v1/models/parcel_models.py. contains user models for the app."""
-# from .import MockDatabase
-
-# Initialize the mock database
-# database = MockDatabase()
 parcel = []
 
 
@@ -52,5 +47,12 @@ class ParcelModel():
         for parcel_order in parcel:
             if str(id) == parcel_order["id"]:
                 parcel_order.update({'status': 'Canceled'})
-                return parcel_order 
+                return parcel_order
             return 404
+
+    @classmethod
+    def get_one_parcel_by_user(cls, id):
+        """Method for getting a specific parcel available in the database."""
+        new_parcel = [new_par for new_par in parcel if new_par[
+            'id'] == str(id)]  # list comprehension
+        return new_parcel

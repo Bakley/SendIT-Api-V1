@@ -2,10 +2,9 @@
 We are expected to create a set of API endpoints
 
 [![Build Status](https://travis-ci.org/Bakley/SendIT-Api-V1.svg?branch=develop)](https://travis-ci.org/Bakley/SendIT-Api-V1)
-
 [![Maintainability](https://api.codeclimate.com/v1/badges/a078df0f9b3d7e6aa7ef/maintainability)](https://codeclimate.com/github/Bakley/SendIT-Api-V1/maintainability)
-
 [![Test Coverage](https://api.codeclimate.com/v1/badges/a078df0f9b3d7e6aa7ef/test_coverage)](https://codeclimate.com/github/Bakley/SendIT-Api-V1/test_coverage)
+[![Coverage Status](https://coveralls.io/repos/github/Bakley/SendIT-Api-V1/badge.svg)](https://coveralls.io/github/Bakley/SendIT-Api-V1)
 
 ## API Endpoints covered included in this branch
 
@@ -66,6 +65,22 @@ Next, install the requirements by typing:
 
 ```
 pip install -r requirements.txt
+```
+
+## How to run the app
+
+On the terminal type:
+
+```
+export 	FLASK_ENV=development
+```
+
+```
+export FLASK_APP=run.py
+```
+
+```
+flask run
 ```
 
 ## Unit Testing
