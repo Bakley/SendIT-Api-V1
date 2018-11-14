@@ -46,9 +46,6 @@ class SignupResource(Resource):
         if len(username) < 4:
             return {'message':
                     'Username should be atleast 4 characters'}, 400
-        if check_for_blanks(password) or check_for_blanks(username) or check_for_blanks(email):
-            return {'message':
-                    'All fields are required'}, 400
 
         if len(password) < 8:
             return {'message':
@@ -61,8 +58,12 @@ class SignupResource(Resource):
         if username_exists or email_exists:
             return {'message': 'User already exists'}, 203
 
+        if check_for_blanks(username) or check_for_blanks(email) or check_for_blanks(role):
+            return {'message': 'All fields are required'}, 400
+
         user = UserModel(username=args.get('username'), email=args.get(
             'email'), role=args.get('role'), password=password)
+
         user = user.save()
 
         return {'message': 'Successfully registered', 'user': user}, 200

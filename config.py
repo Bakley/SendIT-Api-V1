@@ -1,7 +1,10 @@
+"""The project configuration files."""
 import os
 
 
 class Config():
+    """Parent configuration."""
+
     DEBUG = False
     TESTING = False
     CSRF_ENABLE = True
@@ -9,16 +12,22 @@ class Config():
 
 
 class Development(Config):
+    """Development environment config."""
+
     DEBUG = True
     TESTING = True
 
 
 class Production(Config):
+    """Production environment config."""
+
     DEBUG = False
     TESTING = False
 
 
 class Testing(Config):
+    """Testing environment config."""
+
     DEBUG = True
     TESTING = True
 

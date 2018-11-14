@@ -12,22 +12,22 @@ class ParcelResource(Resource):
     # Enables adding and parsing of multiple arguments in the context of a
     # single request
     parser = reqparse.RequestParser()
-    parser.add_argument('present_location', type=str,
+    parser.add_argument('present_location', type=str, required=True,
                         help='The present location cannot be blank')
-    parser.add_argument('status', type=str, help='The status cannot be blank')
-    parser.add_argument('destination', type=str,
+    parser.add_argument('destination', type=str, required=True,
                         help='The destination cannot be blank')
-    parser.add_argument('price', type=str, help='The price cannot be blank')
-    parser.add_argument('weight', type=str, help='The weight cannot be blank')
+    parser.add_argument('price', type=str, required=True,
+                        help='The price cannot be blank')
+    parser.add_argument('weight', type=str, required=True,
+                        help='The weight cannot be blank')
 
     def post(self):
         """Method for creating a parcel delivery order POST http method."""
         args = ParcelResource.parser.parse_args()
-        present_location = args.get('present_location', '')
-        price = args.get('price', '')
-        weight = args.get('weight', '')
-        destination = args.get('destination', '')
-        # status = args.get('status', '')
+        present_location = args.get('present_location')
+        price = args.get('price')
+        weight = args.get('weight')
+        destination = args.get('destination')
 
         if check_for_blanks(present_location) or check_for_blanks(weight) or check_for_blanks(price) or check_for_blanks(destination):
             return {'message': 'All fields are required'}, 400
@@ -35,13 +35,13 @@ class ParcelResource(Resource):
         parcel = ParcelModel(present_location=present_location, price=price,
                              weight=weight, destination=destination)
         parcel = parcel.save()
+
         return {'message':
                 'Parcel delivery order has been saved', 'parcel': parcel}, 201
 
     def get(self):
         """Method for gettting single parcel delivery order GET http method."""
         product_order = ParcelModel.get_all_parcels(id)
-        print("product_order", product_order)
         if not product_order:
             return{'message': 'No product yet found'}, 404
 
@@ -55,6 +55,7 @@ class ParcelResource(Resource):
             product_order.delete()
             return {'message':
                     'The product delivery order has been deleted'}, 200
+
         return {'message': 'No product delivery order found'}
 
 

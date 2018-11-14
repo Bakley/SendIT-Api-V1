@@ -60,8 +60,8 @@ class UserModel:
     @classmethod
     def get_user_by_email(cls, email):
         """Method for getting user by email."""
-        for id_ in database.users:
-            user = database.users.get(id_)
+        for usermail in database.users:
+            user = database.users.get(usermail)
             if user.email == email:
                 return user
         return None
@@ -69,8 +69,8 @@ class UserModel:
     @classmethod
     def get_user_by_username(cls, username):
         """Method for getting user by username."""
-        for id_ in database.users:
-            user = database.users.get(id_)
+        for uname in database.users:
+            user = database.users.get(uname)
             if user.username == username:
                 return user
         return None

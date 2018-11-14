@@ -1,3 +1,4 @@
+"""Main file to run app."""
 import os
 
 from app import create_app
