@@ -18,8 +18,7 @@ class BaseClass(unittest.TestCase):
         """Initialize app and define test variables."""
         self.app = create_app('testing')
         self.client = self.app.test_client()
-        self.app_context = self.app.app_context()
-        self.app_context.push()
+
         self.user_data = {
             "username": "Barclay",
             "email": "koin@gmail.com",

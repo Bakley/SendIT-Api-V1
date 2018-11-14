@@ -21,8 +21,6 @@ class TestUserModel(BaseClass):
         parcel_order.pop()
         self.assertEqual(0, len(parcel))
 
-    def test_get_a_parcel(self):
-        """Test successful get a parcel."""
-        self.parcel_order1
-        parcel_order = ParcelModel.get_one_parcel(id=1)
-        self.assertIsInstance(parcel_order, ParcelModel)
+    def test_get_all_parcel(self):
+        """Test if we can get all parcels."""
+        pass
