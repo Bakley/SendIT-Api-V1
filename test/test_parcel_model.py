@@ -24,3 +24,7 @@ class TestUserModel(BaseClass):
     def test_get_all_parcel(self):
         """Test if we can get all parcels."""
         pass
+
+    def test_weight_cannot_be_string(self):
+        """Test if weight cannot be a string."""
+        pass

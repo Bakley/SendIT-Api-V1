@@ -31,17 +31,14 @@ class SignupResource(Resource):
         email = args.get('email')
         role = args.get('role')
 
-        email_format = re.compile(
-            r"(^[a-zA-Z0-9_.-]+@[a-zA-Z-]+\.[a-zA-Z-]+$)")
-        username_format = re.compile(r"(^[A-Za-z]+$)")
-
-        if not (re.match(username_format, username)):
+        if not (re.match(re.compile(r"(^[A-Za-z]+$)"), username)):
             return {'message':
-                    'Invalid username, only characters allowed no intergs allowed'}, 400
+                    'Invalid username, only characters allowed'}, 400
 
-        elif not (re.match(email_format, email)):
+        elif not (re.match(re.compile(
+                r"(^[a-zA-Z0-9_.-]+@[a-zA-Z-]+\.[a-zA-Z-]+$)"), email)):
             return {'message':
-                    'Invalid email. Ensure email is of the form example@mail.com'}, 400
+                    'Invalid email. Ensure email is example@mail.com'}, 400
 
         if len(username) < 4:
             return {'message':
@@ -58,7 +55,8 @@ class SignupResource(Resource):
         if username_exists or email_exists:
             return {'message': 'User already exists'}, 203
 
-        if check_for_blanks(username) or check_for_blanks(email) or check_for_blanks(role):
+        if check_for_blanks(username) or check_for_blanks(email) or \
+                check_for_blanks(role):
             return {'message': 'All fields are required'}, 400
 
         user = UserModel(username=args.get('username'), email=args.get(
