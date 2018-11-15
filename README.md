@@ -3,7 +3,7 @@ We are expected to create a set of API endpoints
 
 [![Build Status](https://travis-ci.org/Bakley/SendIT-Api-V1.svg?branch=develop)](https://travis-ci.org/Bakley/SendIT-Api-V1)
 [![Maintainability](https://api.codeclimate.com/v1/badges/a078df0f9b3d7e6aa7ef/maintainability)](https://codeclimate.com/github/Bakley/SendIT-Api-V1/maintainability)
-[![Coverage Status](https://coveralls.io/repos/github/Bakley/SendIT-Api-V1/badge.svg)](https://coveralls.io/github/Bakley/SendIT-Api-V1)
+[![Coverage Status](https://coveralls.io/repos/github/Bakley/SendIT-Api-V1/badge.svg?branch=ch-work-on-failing-travis-161947687)](https://coveralls.io/github/Bakley/SendIT-Api-V1?branch=ch-work-on-failing-travis-161947687)
 
 ## API Endpoints covered included in this branch
 
