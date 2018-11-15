@@ -28,10 +28,11 @@ class BaseClass(unittest.TestCase):
 
         self.parcel_data = [
             {
-                "present_location": "Nakuru",
-                "price": "$12",
-                "weight": "21kg",
-                "destination": "Nairobi",
+                "sender_location": "Nanyuki",
+                "weight": "9",
+                "destination": "udsfb",
+                "parcel_name": "Bucket",
+                "userid": "1"
             }
         ]
 
@@ -42,10 +43,11 @@ class BaseClass(unittest.TestCase):
             role='Admin')
 
         self.parcel_order1 = ParcelModel(
-            present_location="Nyeri",
-            price="$21",
-            weight="12kg",
-            destination="Nairobi"
+            sender_location="Nanyuki",
+            weight="9",
+            destination="udsfb",
+            parcel_name="Bucket",
+            userid="1"
         )
 
         self.test_user = UserModel(
